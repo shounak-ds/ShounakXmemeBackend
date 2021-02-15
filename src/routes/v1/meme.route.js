@@ -60,7 +60,7 @@ router.post("/", async (req, res) => {
 
     } else {
 
-      console.log(newimg._id);
+      console.log("ObjectID: ", newlyCreated.objectID);
 
       res.status(201).send(newlyCreated.objectID);
 

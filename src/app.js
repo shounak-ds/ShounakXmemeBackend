@@ -14,11 +14,20 @@ app.use(captureDateMiddleware);
 
 app.use("/v1", routes);
 
-mongoose.connect(config.mongoose.url).then(() => {
+const url = `mongodb://Shounak:mongo@cluster0-shard-00-00.g6aii.mongodb.net:27017,cluster0-shard-00-01.g6aii.mongodb.net:27017,cluster0-shard-00-02.g6aii.mongodb.net:27017/imageapp?ssl=true&replicaSet=atlas-oumpcm-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
-  console.log("Connected to MongoDB");
-
-});
+const connectionParams={
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect(url,connectionParams)
+    .then( () => {
+        console.log('Connected to database ')
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. \n${err}`);
+    })
 
 app.listen(config.port, () => {
   console.log(`App is running on port ${config.port}`);
