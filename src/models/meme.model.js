@@ -22,10 +22,6 @@ const ImageSchema = new mongoose.Schema(
       required: false,
     },
 
-    _id: {
-      type: Number,
-      required: true,
-    }
   }
 
 );

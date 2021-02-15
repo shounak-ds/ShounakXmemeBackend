@@ -50,7 +50,7 @@ router.post("/", async (req, res) => {
     src: req.body.src,
   };
 
-  Images.create(newimg, (err, newlyCreated) => {
+ Images.create(newimg, (err, newlyCreated) => {
 
     if (err) {
 
@@ -60,9 +60,7 @@ router.post("/", async (req, res) => {
 
     } else {
 
-      console.log("ObjectID: ", newlyCreated.objectID);
-
-      res.status(201).send(newlyCreated.objectID);
+      res.status(201).send(newlyCreated._id);
 
     }
 
