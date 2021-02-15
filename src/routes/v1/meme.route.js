@@ -38,8 +38,6 @@ router.post("/", async (req, res) => {
   ); */
 
   console.log("Request body: ", req.body);
-
-  const count = await Images.countDocuments();
   
   let newimg = {
 
@@ -50,8 +48,6 @@ router.post("/", async (req, res) => {
     Caption: req.body.Caption,
 
     src: req.body.src,
-
-    _id: count+1
   };
 
   Images.create(newimg, (err, newlyCreated) => {
@@ -66,7 +62,7 @@ router.post("/", async (req, res) => {
 
       console.log(newimg._id);
 
-      res.status(201).send(newlyCreated);
+      res.status(201).send(newlyCreated.objectID);
 
     }
 
