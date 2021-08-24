@@ -2,10 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Images = require("../../models/meme.model");
 
-/**
- * Get all TODOS:
- * curl http://localhost:8082/v1/memes
- */
+
 router.get("/", async (req, res) => {
 
     Images.find({}, (err, allImages) => {
@@ -25,12 +22,7 @@ router.get("/", async (req, res) => {
     });
 });
 
-/**
- * Add a TODO to the list
- * curl -X POST http://localhost:8082/v1/memes \
-    -d '{"src": "<image_url>","Name": "Apple","Caption": "I am apple", "PostDate": ${New Date()}}' \
-    -H 'Content-Type: application/json'
-*/
+
 router.post("/", async (req, res) => {
 
   /* console.log(
@@ -68,14 +60,7 @@ router.post("/", async (req, res) => {
 
 });
 
-/**
- * Update an existing TODO
- * curl -v -X PUT http://localhost:8082/v1/todos \
-    -d '{"_id": "<id-value>", "name": "Play tennis","startDate": "2021-01-07","endDate": "2021-01-09"}' \
-    -H 'Content-Type: application/json'
- * 
- * Nb: You'll need to change the "id" value to that of one of your todo items
-*/
+
 router.patch("/", (req, res) => {
 
   console.log("Request body: ", req.body);
@@ -124,12 +109,7 @@ router.patch("/", (req, res) => {
 
 });
 
-/**
- * Delete a TODO from the list
- * curl -v -X "DELETE" http://localhost:8082/v1/todos/<id-value>
- *
- * Nb: You'll need to change "<id-value>" to the "id" value of one of your todo items
- */
+
 router.delete("/:id", (req, res) => {
 
   const IdToDelete = req.params.id;
